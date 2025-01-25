@@ -20,8 +20,6 @@ Check for missing or duplicate values ​​in the columns.
 Analyze the distributions of data and sales based on seasons.
 
 
-Tools:
-Install statsmodel library
 
 
 
