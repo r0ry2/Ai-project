@@ -1,75 +1,74 @@
-Analyze Seasonal Sales Prediction
+Analyzing Crochet Products into Patterns Using Artificial Intelligence
+
 
 1.  (Business Understanding):
 
-Project Objective: The main objective is to optimize the storage process and forecast the demand for products in different seasons (winter, spring, summer, autumn). The project aims to identify the products that achieve the highest sales in each season to guide marketing strategies and seasonal offers.
+Project Objective: Convert crochet product images to patterns using AI.
+
+Main functions:
+Upload images.
+Analyze the image to extract stitch and design details.
+Generate patterns via ChatGPT.
+Display pattern instructions to the user.
+
+Technical Requirements:
+User Interface: Web or Mobile App (choose as needed).
+Backend System: Image Analysis using AI Models, ChatGPT Integration to Generate Patterns.
+API Integration: Connect the system to ChatGPT API and Image Analysis Interface.
 
 
 
-2. Data Understanding:
-
-Data Used: The data was downloaded from the e-commerce dataset available on Kaggle platform. The data contains information such as:
-Invoice number
-Product
-Price
-Quantity
-Invoice date
-Steps taken:
-Review the data to understand the types of variables (categorical and numeric).
-Check for missing or duplicate values ​​in the columns.
-Analyze the distributions of data and sales based on seasons.
-
-
-
+2. Data Understanding
+Objective: To collect and analyze available data to extract insights and information.
+Data required:
+Images of crochet products.
+Data about stitch types, colors, dimensions (which will be extracted from images using image recognition techniques).
+Sources:
+Images will be uploaded by the user.
+Data will be extracted using a computer vision model such as CNN to detect colors, stitches, and size.
 
 
 3. Data Preparation:
-At this stage, the data was cleaned and transformed to be ready for modeling:
-
-Data cleaning: Missing values ​​in columns with missing data were removed or replaced.
-Data transformation:
-Converting dates to seasons (Winter, Spring, Summer, Fall).
-Calculating total sales (TotalSales) using the Quantity * UnitPrice formula.
-Extracting the month and year from the invoice date.
+Objective: Prepare data for training and analysis.
+Steps:
+Image upload: Allow the user to upload images using the Flask-built user interface.
+Image analysis: Use image processing techniques to extract information about stitches, colors, and dimensions.
+Data formatting: Convert the extracted data into a suitable text format, such as:
+Stitch type
+Colors
+Number of stitches in rows
 
 4. Modeling:
-Model Selection: The Random Forest Regressor algorithm was chosen because it is suitable for problems with numerical and categorical variables.
-Data Preparation: The data was divided into Inputs (Features) and Targets (Targets).
-Inputs: The variables include Month, Year, Quantity, and Season (represented numerically).
-Target: Total Sales.
-Model Training: The model was trained on the Training Set.
+Objective: Create a model to analyze images and generate patterns.
+Models used:
+Image analysis using image recognition techniques (such as CNN): to extract details such as stitches and colors.
+Using ChatGPT via API: Build an API to interact with ChatGPT and generate pattern instructions based on the input data.
+Steps:
+Train a model to analyze images.
+Set up an API between the image recognition model and ChatGPT.
+
 
 5. Evaluation
-After training the model, it was evaluated using prediction accuracy metrics such as Mean Absolute Error (MAE) and Root Mean Squared Error (RMSE).
-Metrics used:١
-MAE: Reflects the absolute mean of errors between actual and predicted values.
-RMSE: Reflects the root mean of squared errors.
-Results:
-MAE: 12.28
-RMSE: 106.05
-These values ​​indicate that the model can reasonably predict actual sales, as the error on average is not very high.
+Objective: Evaluate the performance of the system based on the results of the analysis and generation.
 
- The model was used to make sales forecasts for each season. Actual sales results and forecasts for each season were combined.
 
-season
-Total Sales
-Expected sales
-autumn
-3,153,974.55
-3,166,579.00
-the spring
-1,743,295.68
-1,731,037.00
-summer
-1,906,648.60
-1,901,971.00
-winter
-2,107,489.07
-2,072,039.00
-
+Evaluation criteria:
+Accuracy of image analysis (are the details extracted accurately?).
+Accuracy of pattern instructions (are the instructions executable?).
+User satisfaction with the results of the displayed pattern.
+Steps:
+Test the system using various images.
+Ensure that the interpretation and generation are accurate and realistic.
 
 6. Deployment
-Model Accuracy: The performance measures MAE and RMSE were used to evaluate the model. Considering the results, it can be said that the model provides reasonable accuracy in forecasting sales. Sales Comparison: The actual total sales were compared with the forecasts in different seasons. The forecasts were close to the actual sales in most cases.
 
+Objective: To evaluate the system performance based on the analysis and generation results.
+Steps:
+Deploy the application using Flask to provide an image upload interface.
+Enable ChatGPT to generate pattern instructions based on the extracted data.
+Deploy the application to appropriate servers to enable access from different devices.
 
+Production setup:
+Use WSGI such as Gunicorn or uWSGI to run the application in a production environment.
+Ensure that all packages and the virtual environment are ready.
 
