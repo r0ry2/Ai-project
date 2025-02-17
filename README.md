@@ -1,53 +1,42 @@
 Analyzing Crochet Products into Patterns Using Artificial Intelligence
 
 
-1.  (Business Understanding):
+Business Understanding
 
-Project Objective: Convert crochet product images to patterns using AI.
-
-Main functions:
-Upload images.
-Analyze the image to extract stitch and design details.
-Generate patterns via ChatGPT.
-Display pattern instructions to the user.
-
-Technical Requirements:
-User Interface: Web or Mobile App (choose as needed).
-Backend System: Image Analysis using AI Models, ChatGPT Integration to Generate Patterns.
-API Integration: Connect the system to ChatGPT API and Image Analysis Interface.
+💡 The Problem:
+We want to develop an intelligent system that can analyze crochet images and convert them into patterns automatically using artificial intelligence.
+Main objectives:
+✅ Improve the accuracy of recognizing shapes in crochet images
+✅ Clearly extract the boundaries of elements
+✅ Prepare data for later use in artificial intelligence models
 
 
-
-2. Data Understanding
-Objective: To collect and analyze available data to extract insights and information.
-Data required:
-Images of crochet products.
-Data about stitch types, colors, dimensions (which will be extracted from images using image recognition techniques).
-Sources:
-Images will be uploaded by the user.
-Data will be extracted using a computer vision model such as CNN to detect colors, stitches, and size.
+2️⃣ Data Understanding
+📸 The data we deal with:
+Images containing crochet products in different colors and shapes.
+👀 Challenges:
+🔹 Diverse backgrounds that may hinder the identification of crochet
+🔹 Differences in lighting and colors in the images
+🔹 The need to purify the image and isolate the crochet from the background
 
 
-3. Data Preparation:
-Objective: Prepare data for training and analysis.
-Steps:
-Image upload: Allow the user to upload images using the Flask-built user interface.
-Image analysis: Use image processing techniques to extract information about stitches, colors, and dimensions.
-Data formatting: Convert the extracted data into a suitable text format, such as:
-Stitch type
-Colors
-Number of stitches in rows
-
-4. Modeling:
-Objective: Create a model to analyze images and generate patterns.
-Models used:
-Image analysis using image recognition techniques (such as CNN): to extract details such as stitches and colors.
-Using ChatGPT via API: Build an API to interact with ChatGPT and generate pattern instructions based on the input data.
-Steps:
-Train a model to analyze images.
-Set up an API between the image recognition model and ChatGPT.
+3️⃣ Data Preparation
+At this stage, we used the OpenCV library to process and denoise images, using several techniques such as:
+✅ Convert the image to grayscale
+✅ Improve contrast using CLAHE
+✅ Convert the image to binary (Thresholding)
+✅ Extract edges using Canny Edge Detection
+✅ Find boundaries using cv2.findContours
+📌 Tools and libraries used:
+📌 OpenCV (cv2): for image processing
+📌 Matplotlib: for displaying images
+📌 NumPy: for processing numerical data
 
 
+4️⃣ Modeling
+
+At this stage, we have defined the boundaries using cv2.findContours(), where the crochet contour is accurately extracted, which helps in building a model later to extract the pattern automatically.
+🔹 We can now improve the model using Deep Learning algorithms such as YOLO or Mask R-CNN to automatically recognize the different parts of the crochet.
 5. Evaluation
 Objective: Evaluate the performance of the system based on the results of the analysis and generation.
 
@@ -60,15 +49,10 @@ Steps:
 Test the system using various images.
 Ensure that the interpretation and generation are accurate and realistic.
 
-6. Deployment
+5️⃣ Evaluation
 
-Objective: To evaluate the system performance based on the analysis and generation results.
-Steps:
-Deploy the application using Flask to provide an image upload interface.
-Enable ChatGPT to generate pattern instructions based on the extracted data.
-Deploy the application to appropriate servers to enable access from different devices.
-
-Production setup:
-Use WSGI such as Gunicorn or uWSGI to run the application in a production environment.
-Ensure that all packages and the virtual environment are ready.
-
+🔍 We checked the accuracy of the edge extraction by visualizing the results, and we saw that some edges need improvement.
+⚡ Performance can be improved using:
+✅ Adjusting the Threshold values ​​in cv2.threshold()
+✅ Using advanced filtering like GaussianBlur or Bilateral Filter
+✅ Adjusting the cv2.Canny() parameters to make the edges more visible
